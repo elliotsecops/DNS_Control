@@ -1,6 +1,7 @@
 # ES
 
 Script de Control DNS
+
 Este script permite controlar manualmente la configuración de DNS en una máquina Linux cuando no hay conectividad a internet.
 
 Objetivo
@@ -25,6 +26,7 @@ Este script brinda una solución simple al problema de resolución de DNS al des
 # EN
 
 DNS Control Script
+
 This script allows manually controlling the DNS configuration on a Linux machine when there is no internet connectivity.
 
 Purpose
