@@ -39,6 +39,9 @@ Si deseas usar un servidor DNS diferente, puedes modificar la variable `dns_serv
 
 Si necesitas revertir a la configuración DNS original, puedes restaurar la copia de seguridad creada por el script.
 
+```bash
+sudo cp /etc/resolv.conf.backup /etc/resolv.conf
+```
 ## Colaborar
 
 ¡Se aceptan colaboraciones! Si tienes sugerencias de mejora o encuentras algún problema, abre un issue o envía un pull request.
