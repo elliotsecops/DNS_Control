@@ -1,60 +1,99 @@
-# ES
+# Script de control de DNS
 
-Script de Control DNS
+## Resumen
 
-Este script permite controlar manualmente la configuración de DNS en una máquina Linux cuando no hay conectividad a internet.
+Este repositorio contiene un script bash diseñado para actualizar la configuración de DNS en sistemas Linux. El propósito principal de este script es mejorar la privacidad y seguridad permitiendo a los usuarios cambiar fácilmente entre diferentes servidores DNS, como `9.9.9.9` (Quad9), conocido por su enfoque en privacidad.
 
-Objetivo:
+## Características
 
-Al desconectarse de la red, el sistema automáticamente define al loopback '::1' como servidor DNS, impidiendo resolver nombres. Este script permite cambiarlo de forma automática por otros servidores DNS priorizando la privacidad.
+- **Cambio sencillo de DNS**: Permite a los usuarios modificar rápidamente el servidor DNS para mejorar la privacidad y seguridad.
+- **Copia de seguridad de la configuración original**: Antes de realizar cambios, el script crea una copia de seguridad del archivo `/etc/resolv.conf` original. Esto asegura que los usuarios puedan revertir fácilmente a la configuración DNS original si es necesario.  
+- **Enfoque en privacidad y seguridad**: Al usar servidores DNS enfocados en privacidad como Quad9, este script ayuda a proteger las actividades en línea de los usuarios de potenciales vigilancias y recolección de datos.
 
-· Uso:
+## Uso
 
-Descargar el archivo dns_control.sh
-Otorgar permisos de ejecución: chmod +x dns_control.sh
-Ejecutar el script: ./dns_control.sh
-Recibe como parámetro la IP del servidor DNS a usar. De no proveerse, usa 9.9.9.9 de Quad9 DNS, conocido por su compromiso con la privacidad.
+1. **Clone el repositorio**: Primero, clona este repositorio en tu máquina local.
+   ```bash
+   git clone https://github.com/elliotsecops/DNS_Control.git
+   ```
 
-· Funcionamiento:
+2. **Navega hasta el directorio del script**: Cambia al directorio que contiene el script.
+   ```bash
+   cd DNS_Control
+   ```
 
-Usa sed para reemplazar la entrada de DNS en /etc/resolv.conf. Luego valida y muestra el cambio.
+3. **Hacer ejecutable el script**: Asegúrate de que el script es ejecutable.
+   ```bash
+   chmod +x dns_control.sh
+   ```
 
-· Consideraciones:
+4. **Ejecutar el Script**: Ejecuta el script con `sudo` para aplicar los cambios.
+   ``bash
+   sudo ./dns_control.sh
+   ```
+   Esto actualizará `/etc/resolv.conf` para utilizar el servidor DNS especificado en el script (`9.9.9.9` por defecto).
 
-Realiza cambios de forma no interactiva.
-No realiza copia de seguridad de la configuración original.
-Sólo aplica cambios cuando no hay conectividad.
-Se puede envolver en service para automatizar ejecución.
-Este script brinda una solución simple al problema de resolución de DNS al desconectarse. Es una buena base para automatizar y robustecer el manejo de DNS, especialmente considerando la privacidad.
+Si deseas usar un servidor DNS diferente, puedes modificar la variable `dns_server` en el script.
 
-# EN
+## Restaurar la configuración DNS original
 
-DNS Control Script
+Si necesitas revertir a la configuración DNS original, puedes restaurar la copia de seguridad creada por el script.
 
-This script allows manually controlling the DNS configuration on a Linux machine when there is no internet connectivity.
+## Colaborar
 
-· Purpose:
+¡Se aceptan colaboraciones! Si tienes sugerencias de mejora o encuentras algún problema, abre un issue o envía un pull request.
 
-When the system disconnects from the network, it automatically defines the loopback '::1' as the DNS server, preventing name resolution. This script allows changing it automatically to other DNS servers, prioritizing privacy.
+---
 
-· Usage:
+##EN
 
-Download the dns_control.sh file
-Grant execution permissions: chmod +x dns_control.sh
-Run the script: ./dns_control.sh
-It accepts the IP of the DNS server to use as a parameter. If none is provided, it will use 9.9.9.9 from Quad9 DNS, known for its commitment to privacy.
+# DNS Control Script
 
-· Functionality:
+## Overview
 
-It uses sed to replace the DNS entry in /etc/resolv.conf. Then it validates and shows the change.
+This repository contains a bash script designed to update the DNS settings on a Linux system. The primary purpose of this script is to enhance privacy and security by allowing users to easily switch between different DNS servers, such as `9.9.9.9` (Quad9), which is known for its privacy-focused approach.
 
-When reconnecting, the system will revert to '::1'. Run the script again if disconnected.
+## Features
 
-· Considerations:
+- **Easy DNS Switching**: Allows users to quickly change their DNS server to enhance privacy and security.
+- **Backup of Original Configuration**: Before making any changes, the script creates a backup of the original `/etc/resolv.conf` file. This ensures that users can easily revert to their original DNS settings if needed.
+- **Privacy and Security Focus**: By using privacy-focused DNS servers like Quad9, this script helps protect users' online activities from potential surveillance and data collection.
 
-Makes non-interactive configuration changes.
-Does not back up the original configuration.
-Only applies changes when offline.
-Can be wrapped in a service to automate execution.
+## Usage
 
-This script provides a simple solution to the DNS resolution problem when disconnecting. It's a good starting point to automate and strengthen DNS management, especially considering user privacy.
+1. **Clone the Repository**: First, clone this repository to your local machine.
+   ```bash
+   git clone https://github.com/elliotsecops/DNS_Control.git
+   ```
+
+2. **Navigate to the Script Directory**: Change to the directory containing the script.
+   ```bash
+   cd DNS_Control
+   ```
+
+3. **Make the Script Executable**: Ensure the script is executable.
+   ```bash
+   chmod +x dns_control.sh
+   ```
+
+4. **Run the Script**: Execute the script with `sudo` to apply the changes.
+   ```bash
+   sudo ./dns_control.sh
+   ```
+   This will update `/etc/resolv.conf` to use the DNS server specified in the script (`9.9.9.9` by default).
+
+## Customization
+
+If you wish to use a different DNS server, you can modify the `dns_server` variable in the script.
+
+## Restoring Original DNS Settings
+
+If you need to revert to the original DNS settings, you can restore the backup created by the script.
+
+```bash
+sudo cp /etc/resolv.conf.backup /etc/resolv.conf
+```
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or encounter any issues, please open an issue or submit a pull request.
