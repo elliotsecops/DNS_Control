@@ -45,7 +45,7 @@ Si necesitas revertir a la configuración DNS original, puedes restaurar la copi
 
 ---
 
-##EN
+## EN
 
 # DNS Control Script
 
