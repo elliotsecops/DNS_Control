@@ -28,7 +28,7 @@ Este repositorio contiene un script bash diseñado para actualizar la configurac
    ```
 
 4. **Ejecutar el Script**: Ejecuta el script con `sudo` para aplicar los cambios.
-   ``bash
+   ```bash
    sudo ./dns_control.sh
    ```
    Esto actualizará `/etc/resolv.conf` para utilizar el servidor DNS especificado en el script (`9.9.9.9` por defecto).
